@@ -24,7 +24,6 @@ class Album extends React.Component {
       artistInformation: album[0],
       fullAlbum: albumList,
     });
-    console.log(album);
   }
 
   albumList(apiObject) {
@@ -47,6 +46,8 @@ class Album extends React.Component {
             key={ music.trackId }
             trackName={ music.trackName }
             previewUrl={ music.previewUrl }
+            trackId={ music.trackId }
+            musicObj={ music }
           />
         ))}
       </div>
