@@ -9,6 +9,9 @@ class Login extends React.Component {
 
     this.state = {
       text: '',
+      email: '',
+      imagem: '',
+      description: '',
       buttonDisabled: true,
       itsLoading: false,
       redirect: false,
@@ -53,16 +56,30 @@ class Login extends React.Component {
   }
 
   objectUser() {
-    const { text } = this.state;
+    const { text, email, imagem, description } = this.state;
     const newObject = {
       name: '',
+      email: '',
+      image: '',
+      description: '',
     };
     newObject.name = text;
+    newObject.email = email;
+    newObject.image = imagem;
+    newObject.description = description;
     return newObject;
   }
 
   render() {
-    const { text, buttonDisabled, itsLoading, redirect } = this.state;
+    const {
+      text,
+      imagem,
+      email,
+      description,
+      buttonDisabled,
+      itsLoading,
+      redirect,
+    } = this.state;
     return (
       <div data-testid="page-login">
         { itsLoading ? <Loading /> : (
@@ -70,6 +87,7 @@ class Login extends React.Component {
             <h1>Login</h1>
             <form>
               <label htmlFor="text">
+                UserName:
                 <input
                   type="text"
                   id="text"
@@ -77,6 +95,35 @@ class Login extends React.Component {
                   value={ text }
                   onChange={ this.inputChange }
                   data-testid="login-name-input"
+                />
+              </label>
+              <label htmlFor="email">
+                Email:
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  value={ email }
+                  onChange={ this.inputChange }
+                />
+              </label>
+              <label htmlFor="imagem">
+                Imagem URL:
+                <input
+                  type="text"
+                  id="imagem"
+                  name="imagem"
+                  value={ imagem }
+                  onChange={ this.inputChange }
+                />
+              </label>
+              <label htmlFor="description">
+                Descrição:
+                <textarea
+                  id="description"
+                  name="description"
+                  value={ description }
+                  onChange={ this.inputChange }
                 />
               </label>
               <button
